@@ -97,28 +97,65 @@ class NotificationCreationState extends State {
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(children: childWidgets),
+                new MyPicture(
+                  url:
+                      'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 10.0, left: 10.0),
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(children: childWidgets),
+                new MyPicture(
+                  url:
+                      'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
                 ),
               ],
             )));
   }
+}
+
+class MyPicture extends StatefulWidget {
+  final url;
+
+  const MyPicture({
+    Key key,
+    this.url,
+  }) : super(key: key);
+
+  @override
+  _MyPictureState createState() => new _MyPictureState();
+}
+
+class _MyPictureState extends State<MyPicture> {
+  var _url;
+  var _img;
 
   @override
   void initState() {
     super.initState();
-
-    var url = 'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg';
-    http.get(url).then((response) {
+    _url = widget.url;
+    http.get(_url).then((response) {
       print('download complete');
-      setState(() => imgBytes = response.bodyBytes);
+      setState(() => _img = response.bodyBytes);
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var childWidgets = <Widget>[];
+    if (_img != null) {
+      childWidgets.add(Image.memory(
+        _img,
+        width: MediaQuery.of(context).size.width - 150,
+      ));
+    }
+    childWidgets.add(IconButton(
+      icon: Icon(Icons.cancel),
+      onPressed: () => Fluttertoast.showToast(msg: 'cancel'),
+    ));
+
+    return new Container(
+      margin: EdgeInsets.only(top: 10.0, left: 10.0),
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        children: childWidgets,
+      ),
+    );
   }
 }
