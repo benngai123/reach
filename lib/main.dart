@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reach/global.dart';
 import 'package:reach/home.dart';
 import 'package:reach/notification_list.dart';
 import 'notification_view.dart';
@@ -11,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-//      home: HomePage(),
-    home: NotificationCreationPage(),
+      home: HomePage(),
       routes: <String, WidgetBuilder>{
-        '/notificationList': (BuildContext context) => NotificationListPage(),
-        '/notificationView': (BuildContext context) => NotificationViewPage(),
+        notificationList: (BuildContext context) => NotificationListPage(),
+        notificationView: (BuildContext context) => NotificationViewPage(),
+        notificationCreation: (BuildContext context) => NotificationCreationPage(),
       },
     );
   }

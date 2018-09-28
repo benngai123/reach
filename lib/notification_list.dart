@@ -22,7 +22,7 @@ class NotificationListState extends State {
 
         onTap: () {
           notificationSelection = item;
-          Navigator.pushNamed(context, '/notificationView');
+          Navigator.pushNamed(context, notificationView);
         },
       ));
     }

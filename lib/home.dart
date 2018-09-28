@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:reach/global.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -85,7 +86,7 @@ class HomeState extends State {
               ],
             ),
             color: Colors.lightBlue,
-            onPressed: () => Navigator.pushNamed(context, '/notificationList'),
+            onPressed: () => Navigator.pushNamed(context, notificationList),
           ),
           FlatButton(
             child: Column(
@@ -116,6 +117,21 @@ class HomeState extends State {
             ),
             color: Colors.deepOrange,
             onPressed: () => Fluttertoast.showToast(msg: 'Courses'),
+          ),
+          FlatButton(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.create_new_folder, size: 48.0, color: Colors.white),
+                Text(
+                  'Creation',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0, color: Colors.white),
+                ),
+              ],
+            ),
+            color: Colors.amber,
+            onPressed: () => Navigator.pushNamed(context, notificationCreation),
           )
         ],
       ),
