@@ -13,6 +13,11 @@ dependencies:
   intl: ^0.15.6           # for datetime conversion
   fluttertoast: ^2.0.7    # for showing a toast message
 
+  google_sign_in: ^3.0.4 # for google sign-in
+  firebase_auth: ^0.5.15 # for Firebase sign-in
+  firebase_database: ^0.4.6 # for database access
+  firebase_storage: ^0.3.7 # for storage access
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -8,8 +8,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeState extends State {
-  var userID = 'cxzvxzcb';
-
   @override
   Widget build(BuildContext context) {
     if (null != userID) {
@@ -47,9 +45,12 @@ class HomeState extends State {
               textAlign: TextAlign.center,
             ),
             IconButton(
-                icon: Icon(Icons.child_care),
-                iconSize: 64.0,
-                onPressed: () => Fluttertoast.showToast(msg: 'Hello')),
+              icon: Icon(Icons.child_care),
+              iconSize: 64.0,
+              onPressed: () => signIn(context).then((success) {
+                    if (success) setState(() {});
+                  }),
+            )
           ],
         ),
       ),

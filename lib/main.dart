@@ -5,7 +5,10 @@ import 'package:reach/notification_list.dart';
 import 'notification_view.dart';
 import 'notification_creation.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  firebaseInit();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,7 +19,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         notificationList: (BuildContext context) => NotificationListPage(),
         notificationView: (BuildContext context) => NotificationViewPage(),
-        notificationCreation: (BuildContext context) => NotificationCreationPage(),
+        notificationCreation: (BuildContext context) =>
+            NotificationCreationPage(),
       },
     );
   }
