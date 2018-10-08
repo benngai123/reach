@@ -26,7 +26,7 @@ void firebaseInit() {
   firebaseAuth = FirebaseAuth.instance;
   dbRef = FirebaseDatabase(app: firebaseApp).reference();
   storageRef =
-      FirebaseStorage(app: firebaseApp, storageBucket: 'yyyyyyyyyy').ref();
+      FirebaseStorage(app: firebaseApp, storageBucket: 'gs://reach-ben.appspot.com').ref();
   Fluttertoast.showToast(msg: 'Initialization is done');
 }
 
@@ -47,4 +47,16 @@ Future<bool> signIn(context) async {
     showDialog(context: context, builder: (_) => alert);
   }
   return userID != null;
+}
+
+void signOut() async {
+  userID = null;
+  await firebaseAuth.signOut();
+  await googleSignIn.signOut();
+}
+
+Future<void> getRoles() async{
+  var rolesRef = dbRef.child('users/$userID/roles');
+  var snapshot = await rolesRef.once();
+  roles = snapshot.value as Map;
 }

@@ -52,61 +52,66 @@ class NotificationCreationState extends State {
             )
           ],
         ),
-        body: Container(
-            margin: EdgeInsets.all(10.0),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        'Post to',
-                        style: TextStyle(fontSize: 20.0),
-                        textAlign: TextAlign.start,
+        body: ListView(
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.all(10.0),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Post to',
+                            style: TextStyle(fontSize: 20.0),
+                            textAlign: TextAlign.start,
+                          ),
+                          DropdownButton(
+                            value: selectedCourse,
+                            items: items,
+                            onChanged: (course) =>
+                                setState(() => selectedCourse = course),
+                          ),
+                        ],
                       ),
-                      DropdownButton(
-                        value: selectedCourse,
-                        items: items,
-                        onChanged: (course) =>
-                            setState(() => selectedCourse = course),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        TextField(
-                          style: TextStyle(fontSize: 15.0, color: Colors.black),
-                          decoration: InputDecoration(
-                              hintText: 'Mobile App Development'),
-                        ),
-                        TextField(
-                          style: TextStyle(fontSize: 15.0, color: Colors.black),
-                          decoration: InputDecoration(
-                              hintText:
-                                  'The notification creation page allows the user to pick photos from the gallery or camera'),
-                        ),
-                      ],
                     ),
-                  ),
-                ),
-                new MyPicture(
-                  url:
-                      'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
-                ),
-                new MyPicture(
-                  url:
-                      'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
-                ),
-              ],
-            )));
+                    Container(
+                      margin:
+                          EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          TextField(
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.black),
+                            decoration: InputDecoration(
+                                hintText: 'Mobile App Development'),
+                          ),
+                          TextField(
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.black),
+                            decoration: InputDecoration(
+                                hintText:
+                                    'The notification creation page allows the user to pick photos from the gallery or camera'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    new MyPicture(
+                      url:
+                          'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
+                    ),
+                    new MyPicture(
+                      url:
+                          'http://www.comp.hkbu.edu.hk/~mandel/comp7510/comp7510.jpg',
+                    ),
+                  ],
+                ))
+          ],
+        ));
   }
 }
 

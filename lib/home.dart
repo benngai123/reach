@@ -63,8 +63,11 @@ class HomeState extends State {
         title: Text('REACH'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.account_box),
-            onPressed: () => Fluttertoast.showToast(msg: 'Bye Bye'),
+            icon: Icon(Icons.close),
+            onPressed: () {
+              signOut();
+              setState(() {});
+            },
           )
         ],
       ),
